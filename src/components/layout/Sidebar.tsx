@@ -19,7 +19,7 @@ const menuItems = [
 ];
 function Sidebar() {
   return (
-    <aside className="w-64 border-l bg-white dark:border-gray-700 dark:bg-gray-800">
+    <aside className="w-64 h-screen border-l bg-white dark:border-gray-700 dark:bg-gray-800">
       <div className="border-b p-5">
         <h1 className="text-xl font-bold text-blue-600">پنل مدیریت</h1>
       </div>

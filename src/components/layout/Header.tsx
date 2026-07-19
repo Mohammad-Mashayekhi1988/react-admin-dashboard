@@ -3,11 +3,12 @@ import { getSiteInfo, type SiteInfo } from "../../services/site";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { Sun, Moon } from "lucide-react";
-
+import  LoginModal  from "../auth/LoginModal";
 function Header() {
   const [siteInfo, setSiteInfo] = useState<SiteInfo | null>(null);
   const { theme, setTheme } = useContext(ThemeContext);
   const [loading, setLoading] = useState(true);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
@@ -57,12 +58,17 @@ function Header() {
         )}
       </button>
       <button
+      onClick={()=>setIsLoginModalOpen(true)}
         className="flex items-center gap-2 px-4 py-2 rounded-lg border transition-all duration-300 
                    text-gray-700 border-gray-300 hover:bg-gray-100 
                    dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700"
       >
         ورود / ثبت
       </button>
+      <LoginModal
+      isOpen={isLoginModalOpen}
+      onClose={()=>setIsLoginModalOpen(false)}
+      />
     </header>
   );
 }

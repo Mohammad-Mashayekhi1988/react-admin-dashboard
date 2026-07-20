@@ -4,6 +4,7 @@ interface TextFieldProps {
   placeholder?: string;
   value: string;
   onChange: (value: string) => void;
+  error?: string;
 }
 
 function TextField({
@@ -12,6 +13,7 @@ function TextField({
   placeholder,
   value,
   onChange,
+  error,
 }: TextFieldProps) {
   return (
     <div className="mb-4">
@@ -23,9 +25,10 @@ function TextField({
         type={type}
         placeholder={placeholder}
         value={value}
-        onChange={(e) => onchange(e.target.value)}
+        onChange={(e) => onChange(e.target.value)}
         className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
       />
+      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
     </div>
   );
 }
